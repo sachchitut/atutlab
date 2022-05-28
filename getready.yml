@@ -1,0 +1,18 @@
+- hosts: all
+  become: true
+  tasks:
+
+  - name: import elasticserach key
+    apt_key:
+      url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+      state: present
+    become: true
+  - name: install elasticsearch 8 deb repository
+    apt_repository:
+      repo: deb https://artifacts.elastic.co/packages/8.x/apt stable main
+      state: present
+    become: true
+  - name: install elasticsearch package
+    apt:
+      name: tcpdump
+
